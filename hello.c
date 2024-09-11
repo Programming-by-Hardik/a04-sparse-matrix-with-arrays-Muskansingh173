@@ -33,23 +33,94 @@ int main() {
 // Function to convert a matrix into sparse matrix format
 void createSparseMatrix(int sparseMatrix[][3], int originalMatrix[][N], int rows, int cols) {
     //WRITE THE FUNCTION DESCRIPTION HERE
+     Certainly! 
+
+
+
+
     
 
+    // Iterate over the original matrix to find non-zero elements
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (originalMatrix[i][j] != 0) {
+                // Store the non-zero element in the sparse matrix
+                sparseMatrix[count + 1][0] = i;
+                sparseMatrix[count + 1][1] = j;
+                sparseMatrix[count + 1][2] = originalMatrix[i][j];
+                count++;
+            }
+        }
+    }
 
-
-
-
-
-
-
+    // Set the first row of the sparse matrix to represent the size and count
+    sparseMatrix[0][0] = rows;
+    sparseMatrix[0][1] = cols;
+    sparseMatrix[0][2] = count;
 }
+
 
 // Function to print sparse matrix representation
 void printSparseMatrix(int sparseMatrix[][3], int nonZeroCount) {
     //WRITE THE FUNCTION DESCRIPTION HERE
     
 
+Certainly! Here's how you can complete the createSparseMatrix and printSparseMatrix functions based on the descriptions given:
 
+1. createSparseMatrix
+Description: Converts an original matrix into its sparse matrix representation. The sparse matrix format is a 2D array where each row represents a non-zero element in the original matrix. The first row of the sparse matrix specifies the dimensions of the original matrix and the number of non-zero elements.
+
+c
+Copy code
+void createSparseMatrix(int sparseMatrix[][3], int originalMatrix[][N], int rows, int cols) {
+    int count = 0;
+
+    // Iterate over the original matrix to find non-zero elements
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (originalMatrix[i][j] != 0) {
+                // Store the non-zero element in the sparse matrix
+                sparseMatrix[count + 1][0] = i;
+                sparseMatrix[count + 1][1] = j;
+                sparseMatrix[count + 1][2] = originalMatrix[i][j];
+                count++;
+            }
+        }
+    }
+
+    // Set the first row of the sparse matrix to represent the size and count
+    sparseMatrix[0][0] = rows;
+    sparseMatrix[0][1] = cols;
+    sparseMatrix[0][2] = count;
+}
+2. printSparseMatrix
+Description: Prints the sparse matrix in a readable format. The first row of the sparse matrix shows the dimensions of the original matrix and the number of non-zero elements, and the following rows show the position and value of each non-zero element.
+
+c
+Copy code
+void printSparseMatrix(int sparseMatrix[][3], int nonZeroCount) {
+    // Print the dimensions of the original matrix and number of non-zero elements
+    printf("Dimensions: %d x %d\n", sparseMatrix[0][0], sparseMatrix[0][1]);
+    printf("Number of non-zero elements: %d\n", sparseMatrix[0][2]);
+    printf("Row  Column  Value\n");
+
+    // Print each non-zero element
+    for (int i = 1; i <= nonZeroCount; i++) {
+        printf("%d      %d       %d\n", sparseMatrix[i][0], sparseMatrix[i][1], sparseMatrix[i][2]);
+    }
+}
+Explanation:
+createSparseMatrix:
+
+It initializes count to keep track of the number of non-zero elements.
+Iterates through the original matrix, checking for non-zero elements.
+Stores each non-zero element's row index, column index, and value in the sparseMatrix.
+Sets the first row of sparseMatrix to indicate the dimensions of the original matrix and the number of non-zero elements.
+printSparseMatrix:
+
+Prints the dimensions of the original matrix and the number of non-zero elements.
+Iterates over the sparse matrix and prints each non-zero element's position and value.
+These implementations should fulfill the requirements outlined in your code and the test cases provided.
 
 
 
